@@ -1,0 +1,21 @@
+name: Deploy to Azure
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Authenticate with Azure
+      run: |
+        echo "AZURE_SUBSCRIPTION_ID=<your-subscription-id>" >> $GITHUB_ENV
+        echo "AZURE_CLIENT_ID=<your-client-id>" >> $GITHUB_ENV
+        echo "AZURE_CLIENT_SECRET=<your-client-secret>" >> $GITHUB_ENV
+        echo "AZURE_TENANT_ID=<your-tenant-id>" >> $GITHUB_ENV
+        echo "AZURE_WEBAPP_NAME=<your-webapp-name
